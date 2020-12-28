@@ -9,6 +9,13 @@ const Container = styled.header`
   display: flex;
   align-items: center;
   padding: 1rem 5rem;
+  width: 100vw;
+  max-width: 1200px;
+  align-self: center;
+
+  @media all and (max-width: 1200px) {
+    max-width: 100%;
+  }
 `;
 
 const Nav = styled.nav`
@@ -22,7 +29,7 @@ const Authentification = styled.div`
 
 const Link = styled.a`
   padding: .5rem 1rem;
-  color: ${colors.gray};
+  color: ${colors.grayViolet};
   font-weight: 500;
 
   &:hover {

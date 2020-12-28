@@ -8,10 +8,16 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-position: 125% 50%;
   height: 70vh;
-  margin: 0 5rem;
+  width: 100vw;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  align-self: center;
+
+  @media all and (max-width: 1200px) {
+    max-width: 100%;
+  }
 `;
 
 const Content = styled.div`
@@ -25,7 +31,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
   line-height: 1.5rem;
-  color: ${colors.gray};
+  color: ${colors.grayViolet};
   margin: 1rem 0;
 `;
 

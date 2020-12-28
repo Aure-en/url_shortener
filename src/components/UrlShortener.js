@@ -4,8 +4,15 @@ import background from '../images/bg-shorten-desktop.svg';
 import { colors, button } from '../style';
 
 // Form
+const FormContainer = styled.div`
+  background: ${colors.background};
+  background: linear-gradient(to bottom, #fff 50%, ${colors.background} 50%);
+`;
+
 const Form = styled.form`
-  margin: 0 10rem;
+  position: relative;
+  width: 90vw;
+  max-width: 1200px;
   padding: 2.5rem;
   background: url(${background});
   background-color: ${colors.violet};
@@ -15,6 +22,7 @@ const Form = styled.form`
   grid-template-columns: 1fr auto;
   grid-gap: 1rem;
   align-items: center;
+  margin: 0 auto;
 `;
 
 const InputContainer = styled.div`
@@ -28,6 +36,10 @@ const Input = styled.input`
   width: 100%;
   border-radius: 5px;
   border: ${(props) => (props.error ? `3px solid ${colors.red}` : '')};
+
+  &::placeholder {
+    color: ${(props) => (props.error ? `${colors.red}` : ``)};
+  }
 `;
 
 const SubmitBtn = styled.button`
@@ -51,13 +63,25 @@ const Error = styled(Message)`
 
 // Urls Displayed
 
+const UrlsList = styled.ul`
+  background: ${colors.background};
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+  padding-top: 1rem;
+`;
+
 const UrlContainer = styled.li`
   display: grid;
   grid-template-columns: 3fr 1fr 6.25rem;
   align-items: center;
   grid-gap: 1rem;
-  padding: 1rem 10rem;
   background: ${colors.white};
+  margin: 0 auto;
+  padding: .5rem 1.5rem;
+  border-radius: .5rem;
+  width: 90vw;
+  max-width: 1200px
 `;
 
 const ShortenedUrl = styled.div`
@@ -149,26 +173,28 @@ function UrlShortener() {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmitLink}>
-        <InputContainer>
-          <Input
-            type='text'
-            value={url}
-            placeholder='Shorten a link here...'
-            onChange={(e) => setUrl(e.target.value)}
-            error={error}
-          />
-          <Error>{error}</Error>
-          {loading && <Message>Shortening...</Message>}
-          {success && <Message>Shortened!</Message>}
-        </InputContainer>
-        <SubmitBtn type='submit' disabled={loading}>
-          Shorten it!
-        </SubmitBtn>
-      </Form>
+    <section>
+      <FormContainer>
+        <Form onSubmit={handleSubmitLink}>
+          <InputContainer>
+            <Input
+              type='text'
+              value={url}
+              placeholder='Shorten a link here...'
+              onChange={(e) => setUrl(e.target.value)}
+              error={error}
+            />
+            <Error>{error}</Error>
+            {loading && <Message>Shortening...</Message>}
+            {success && <Message>Shortened!</Message>}
+          </InputContainer>
+          <SubmitBtn type='submit' disabled={loading}>
+            Shorten it!
+          </SubmitBtn>
+        </Form>
+      </FormContainer>
 
-      <ul>
+      <UrlsList>
         {shortUrls.map((url, index) => {
           return (
             <UrlContainer key={url + index}>
@@ -180,8 +206,8 @@ function UrlShortener() {
             </UrlContainer>
           );
         })}
-      </ul>
-    </>
+      </UrlsList>
+    </section>
   );
 }
 

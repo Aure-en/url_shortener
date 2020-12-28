@@ -47,8 +47,11 @@ table {
 	border-spacing: 0;
 }
 
-* {
+html {
   box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -58,13 +61,15 @@ body {
 	font-size: 1rem;
 }
 
-body {
-	display: flex;
-	justify-content: center;
+#root,
+.App {
+	width: 100vw;
+	max-width: 100%;
 }
 
-#root {
-	width: 1440px;
+.App {
+	display: flex;
+	flex-direction: column;
 }
 
 a {
