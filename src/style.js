@@ -8,5 +8,19 @@ export const colors = {
   blue: 'hsl(255, 11%, 22%)',
   darkViolet: 'hsl(260, 8%, 14%)',
   black: 'hsl(0, 0%, 0%)',
-  white: 'hsl(0, 0%, 100%)'
+  white: 'hsl(0, 0%, 100%)',
+  background: 'hsl(225, 33%, 95%)',
 }
+
+export const button = `
+  background: ${colors.cyan};
+  padding: .5rem 1rem;
+  color: ${colors.white};
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background: ${colors.lightCyan};
+    color: ${colors.white};
+  }
+`

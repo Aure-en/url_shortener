@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { colors } from '../style';
+import { colors, button } from '../style';
 
 // Images
 import { ReactComponent as Logo } from '../images/logo.svg';
@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from '../images/logo.svg';
 const Container = styled.header`
   display: flex;
   align-items: center;
+  padding: 1rem 5rem;
 `;
 
 const Nav = styled.nav`
@@ -22,6 +23,7 @@ const Authentification = styled.div`
 const Link = styled.a`
   padding: .5rem 1rem;
   color: ${colors.gray};
+  font-weight: 500;
 
   &:hover {
     color: ${colors.black};
@@ -29,14 +31,8 @@ const Link = styled.a`
 `;
 
 const Button = styled(Link)`
-  background: ${colors.cyan};
-  border-radius: 1rem;
-  color: ${colors.white};
-
-  &:hover {
-    background: ${colors.lightCyan};
-    color: ${colors.white};
-  }
+  ${button}
+  border-radius: 2rem;
 `;
 
 function Header() {

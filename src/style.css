@@ -51,15 +51,42 @@ table {
   box-sizing: border-box;
 }
 
-#root,
-.App,
 body {
   width: 100vw;
   max-width: 100%;
-  font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+#root {
+	width: 1440px;
 }
 
 a {
   color: #000;
   text-decoration: none;
+}
+
+button {
+	background: none;
+	border: none;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+}
+
+button:focus{
+	outline: none;
+}
+
+input {
+	border: none;
+}
+
+input:focus {
+	outline: none;
 }
