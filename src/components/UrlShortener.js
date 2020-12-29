@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import background from '../images/bg-shorten-desktop.svg';
 import { colors, button } from '../style';
@@ -109,6 +109,14 @@ function UrlShortener() {
   const [success, setSuccess] = useState(false);
   const [wasCopied, setWasCopied] = useState();
 
+  const saveToLocalStorage = (urls) => {
+    return localStorage.setItem('urls', JSON.stringify(urls));
+  }
+
+  const getFromLocalStorage = () => {
+    return localStorage.getItem('urls');
+  }
+
   const handleSubmitLink = async (e) => {
     e.preventDefault();
 
@@ -176,6 +184,16 @@ function UrlShortener() {
     navigator.clipboard.writeText(shortUrls[e.target.id].short_url);
     setWasCopied(+e.target.id);
   };
+
+  useEffect(() => {
+    if (!getFromLocalStorage()) return;
+    setShortUrls(JSON.parse(getFromLocalStorage()))
+  }, [])
+
+  useEffect(() => {
+    if (shortUrls.length === 0) return;
+    saveToLocalStorage(shortUrls)
+  }, [shortUrls])
 
   return (
     <section>
