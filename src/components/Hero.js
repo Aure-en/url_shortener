@@ -11,17 +11,25 @@ const Container = styled.div`
   width: 100vw;
   max-width: 1200px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   overflow: hidden;
+  padding: 5rem;
   align-self: center;
 
   @media all and (max-width: 1200px) {
     max-width: 100%;
   }
+
+  @media all and (max-width: 768px) {
+    background-image: none;
+    height: initial;
+    align-items: center;
+  }
 `;
 
 const Content = styled.div`
   max-width: 30rem;
+  margin: 2rem 1rem;
 `;
 
 const Title = styled.h1`
@@ -41,9 +49,18 @@ const Button = styled.button`
   border-radius: 2rem;
 `;
 
+const Image = styled.img`
+  display: none;
+
+  @media all and (max-width: 576px) {
+    display: block;
+  }
+`;
+
 function Hero() {
   return (
-    <Container >
+    <Container>
+      <Image src={illustration} alt='Man working on a computer' />
       <Content>
         <Title>More than just shorter links</Title>
         <Description>Build your brand's recognition and get detailed insights on how your links are performing.</Description>

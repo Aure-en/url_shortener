@@ -16,7 +16,6 @@ const Form = styled.form`
   padding: 2.5rem;
   background: url(${background});
   background-color: ${colors.violet};
-  background-repeat: no-repeat;
   border-radius: 0.65rem;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -81,7 +80,13 @@ const UrlContainer = styled.li`
   padding: .5rem 1.5rem;
   border-radius: .5rem;
   width: 90vw;
-  max-width: 1200px
+  max-width: 1200px;
+  word-break: break-all;
+
+  @media all and (max-width: 1200px) {
+    max-width: 100%;
+  }
+
 `;
 
 const ShortenedUrl = styled.div`

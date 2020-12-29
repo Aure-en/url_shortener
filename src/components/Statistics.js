@@ -39,20 +39,34 @@ const CardsList = styled.ul`
   max-width: 1200px;
   margin: 0 auto;
   align-items: start;
+  padding: 0 1rem;
 
   @media all and (max-width: 1200px) {
     max-width: 100%;
+  }
+
+  @media all and (max-width: 576px) {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: initial;
   }
 
   // Cyan Line
   &:before {
     position: absolute;
     top: calc(50% - 1.5rem);
-    left: 0;
+    left: 1rem;
     content: '';
     height: 5px;
     width: 90%;
     background-color: ${colors.cyan};
+
+    // Becomes vertical
+    @media all and (max-width: 576px) {
+      height: 90%;
+      width: 5px;
+      top: 0;
+      left: 50%;
+    }
   }
 `;
 
@@ -62,6 +76,7 @@ const Card = styled.li`
   padding: 4.25rem 2rem 2rem 2rem;
   border-radius: .5rem;
   margin-top: ${props => `${props.index * 2}rem`};
+  height: calc(100% - 2.25rem);
 `;
 
 const CardIcon = styled.div`
